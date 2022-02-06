@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>Exercitii Lab7</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+    public static void encryptAndSaveContent(final String path) {
+    String encryptedFileName = path.substring(0, path.lastIndexOf('.')) + ".enc";
+    try (final FileReader inputFileReader = new FileReader(path);
+    final FileWriter outputFileWriter = new FileWriter(encryptedFileName)) {
+    // read data
+    int c;
+    while ((c = inputFileReader.read()) != -1) {
+    outputFileWriter.write(c - 1);
+    }
+    } catch (FileNotFoundException e) {
+    System.err.println("The file was not found or can not be created because: " + e.getMessage());
+    } catch (IOException e) {
+    System.err.println("Some error occurs: " + e.getMessage());
+    }
+    }
+</project>
